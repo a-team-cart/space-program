@@ -9,7 +9,7 @@ public class cursorDetection : MonoBehaviour
     public bool m_onTerminal;
 
     // private variables ------------------------
-
+    private GameObject m_selectedTerminal;
 
     // ------------------------------------------
     // Start is called before update
@@ -26,11 +26,13 @@ public class cursorDetection : MonoBehaviour
     void Update()
     {
         // When the cursor is on terminal
-        if (m_onTerminal)
+        if (m_onTerminal && m_selectedTerminal)
         {
             // Activate the animation of the cursor
             m_cursor.GetComponent<cursorController>().m_expandAnim = true;
             m_cursor.GetComponent<cursorController>().m_returnAnim = false;
+
+            
         } else
         {   
             // Return the cursor to its normal state
@@ -46,13 +48,19 @@ public class cursorDetection : MonoBehaviour
     {
         // If the cursor interacts/collides with a terminal 
         if (col.gameObject.tag == "Terminal")
+        {
             m_onTerminal = true;
+            m_selectedTerminal = col.gameObject;
+        }
     }
 
     public void OnTriggerExit(Collider col)
     {
         // If the cursor get out of a terminal's collider
         if (col.gameObject.tag == "Terminal")
+        {
             m_onTerminal = false;
+            m_selectedTerminal = null;
+        }
     }
 }
