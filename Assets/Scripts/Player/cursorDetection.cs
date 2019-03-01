@@ -5,11 +5,12 @@ using UnityEngine;
 public class cursorDetection : MonoBehaviour
 {
     // public variables -------------------------
-    public GameObject m_cursor;
-    public bool m_onTerminal;
+    public GameObject m_cursor;                     // Cursor Object
+    public bool m_onTerminal;                       // Cursor on terminal
 
     // private variables ------------------------
-    private GameObject m_selectedTerminal;
+    private GameObject m_selectedTerminal;          // Selected object representing a terimnal
+    private playerInputs m_inputs;                  // Player object
 
     // ------------------------------------------
     // Start is called before update
@@ -18,6 +19,9 @@ public class cursorDetection : MonoBehaviour
     {
         // Clear the terminal recognition
         m_onTerminal = false;
+
+        // Get the player object
+        m_inputs = GameObject.FindGameObjectWithTag("Player").GetComponent<playerInputs>();
     }
 
     // ------------------------------------------
@@ -32,12 +36,19 @@ public class cursorDetection : MonoBehaviour
             m_cursor.GetComponent<cursorController>().m_expandAnim = true;
             m_cursor.GetComponent<cursorController>().m_returnAnim = false;
 
+            // Tell the player about it
+            m_inputs.m_canFocus = true;
+            m_inputs.m_focusedTerminal = m_selectedTerminal;
             
         } else
         {   
             // Return the cursor to its normal state
             m_cursor.GetComponent<cursorController>().m_expandAnim = false;
             m_cursor.GetComponent<cursorController>().m_returnAnim = true;
+
+            // Tell the player about it
+            m_inputs.m_canFocus = false;
+            m_inputs.m_focusedTerminal = m_selectedTerminal;
         }
     }
 

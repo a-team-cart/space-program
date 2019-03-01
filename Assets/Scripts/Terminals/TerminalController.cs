@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TerminalController : MonoBehaviour
+public class terminalController : MonoBehaviour
 {
     // public variables -------------------------
     [Header("Terminal Type")]
-    public bool m_selesctionInterface;              // Selection interface (multiple arrays)
+    public bool m_selectionInterface;               // Selection interface (multiple arrays)
     public bool m_sliderInterface;                  // Slider interface
     [Space(10)]
     public GameObject m_screen;                     // Screen of the terminal
-
-    [HideInInspector] public bool m_listenInput;    // If the player is active on this terminal
+    public bool m_listenInput;                      // If the player is active on this terminal
 
     // private variables ------------------------
 
@@ -24,6 +23,7 @@ public class TerminalController : MonoBehaviour
         // Set listenInput to false per default
         m_listenInput = false;
         
+
     }
 
     // ------------------------------------------
@@ -31,9 +31,14 @@ public class TerminalController : MonoBehaviour
     // ------------------------------------------
     void Update()
     {
-        // If the interface is a selection
-        if (m_listenInput && m_selesctionInterface)
-            inputSelection();
+
+        // If the terminal is activated by the player
+        if (m_listenInput)
+        {    
+            // If the interface is a selection interface
+            if (m_selectionInterface)
+                inputSelection();
+        }
 
     }
 
@@ -42,7 +47,6 @@ public class TerminalController : MonoBehaviour
     // ------------------------------------------
     public void inputSelection() 
     {
-
-
+        // Silence is gold
     }
 }

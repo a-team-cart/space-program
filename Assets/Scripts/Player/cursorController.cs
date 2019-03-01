@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class cursorController : MonoBehaviour
 {
     // public variables -------------------------
-    public bool m_expandAnim;
-    public bool m_returnAnim;
+    public bool m_expandAnim;                       // Expand animation when hovering
+    public bool m_returnAnim;                       // Return to default state animation
     
 
     // private variables ------------------------
