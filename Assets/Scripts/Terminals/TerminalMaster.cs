@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Terminal : MonoBehaviour
+public class TerminalMaster : MonoBehaviour
 {
 
 	//all our variables my dudes
@@ -90,19 +90,6 @@ public class Terminal : MonoBehaviour
     }
 
     public void Power(){
-
-    	//constrain values
-
-    	//calculating timers over time
-
-    	//if it reaches under , power shuts down
-
-    	//annoying voice plays
-    	if(powerStopsTimer <= 0)
-    		_audioSrc.Play();
-
-    	//resets 
-
     	
     }
 

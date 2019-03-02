@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2035111234}
-  m_IndirectSpecularColor: {r: 0.32332358, g: 0.4691064, b: 0.77551025, a: 1}
+  m_IndirectSpecularColor: {r: 0.3261269, g: 0.46718836, b: 0.72646546, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2492,22 +2492,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1831335273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe57ef48b0cf10408781a750f2962ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 5981e7e07d4451f468040d8b636c87bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _oxygenTerminal: 0
-  _foodTerminal: 0
-  _waterTerminal: 0
-  _navigationTerminal: 0
-  _powerTerminal: 0
-  _airlockTerminal: 0
-  _garbageTerminal: 0
-  _groundControlTerminal: 0
-  _lightTerminal: 0
-  _isCurrentlyInteracting: 0
   totalPower: 100
-  powerStopsTimer: 5
-  annoyingVoiceTimer: 4
+  targetTime: 10
+  resetTime: 0
+  voiceWarningTargetTime: 5
 --- !u!65 &1831335275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2590,8 +2581,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: cf396a0eecb8de84080d28d348f71202, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3528,7 +3519,7 @@ GameObject:
   - component: {fileID: 2035111236}
   m_Layer: 0
   m_Name: Directional Light
-  m_TagString: Untagged
+  m_TagString: _Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
