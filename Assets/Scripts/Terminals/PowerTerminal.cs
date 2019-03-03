@@ -63,7 +63,7 @@ public class PowerTerminal : MonoBehaviour
     		_lightSrc.enabled = true;
     	}
 
-    	//debug
+    	//INTERACTION TO RESET LIGHTS, PUT IT IN CHARLES-SENPAI!!!
     	if(Input.GetKeyDown("space"))
     		targetTime = resetTime;
     }
