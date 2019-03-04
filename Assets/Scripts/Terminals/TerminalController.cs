@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class terminalController : MonoBehaviour
+public class TerminalController : MonoBehaviour
 {
     // public variables -------------------------
     [Header("Terminal Type")]

@@ -34,7 +34,7 @@ public class playerInputs : MonoBehaviour
         {   
             // Focus on the selected terminal and activate it
             m_focusedOnTerminal = true;
-            m_focusedTerminal.GetComponent<terminalController>().m_listenInput = true;
+            m_focusedTerminal.GetComponent<TerminalController>().m_listenInput = true;
         }
 
 
@@ -42,7 +42,7 @@ public class playerInputs : MonoBehaviour
         if (m_canFocus && Input.GetButton("Fire2"))
         {
             m_focusedOnTerminal = false;
-            m_focusedTerminal.GetComponent<terminalController>().m_listenInput = false;
+            m_focusedTerminal.GetComponent<TerminalController>().m_listenInput = false;
         }
 
 
