@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Are you debugging?")]
+    public bool _iAmDebugging = false;
+
     [Header("Global Ressources")]
     public float _evaluation = 100f;
     public float _energy = 100f;
@@ -35,9 +38,6 @@ public class GameManager : MonoBehaviour
     [Header("Game Status")]
     public string _gameStatus = "not determined yet";
 
-
-
-
     [Header("Task Properties")]
     //Ali's Code
     public int m_tasksCompleted;
@@ -54,8 +54,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //debug
-        debugBehaviour();
+        //Display the status of all the variable on terminal
+        DisplayStatus();
 
         //ressource behaviour
         RessourceBehaviour();
@@ -64,9 +64,39 @@ public class GameManager : MonoBehaviour
         YourAFailure();
         YouBurntOutCuzYouSuck();
         YourStillAFailureButYouDidAnOKJob();
+      
+        //debug COMMENT OUT WHEN OUTSIDE OF DEBUG MODE
+        if(_iAmDebugging)
+            debugBehaviour();
     }
 
-    //debug
+    // -------------------------------------
+    // Function that links Evaluation/Energy/Credit to the terminals
+    // LINK ALL YOUR TERMINAL REFERENCES HERE!!!!
+    // REPLACE TERMINAL UI WITH UR OWN REFERENCES TO THE TERMINAL
+    // -------------------------------------
+
+    public void DisplayStatus(){
+
+        //EVAL/ENERGY/CREDIT VALUES
+        // _evaluationRef.text = TERMINAL UI;
+        // _energyRef.text =  TERMINAL UI;
+        // _creditRef.text = TERMINAL UI;
+
+        //THE BOOLEANS
+        // _isWorkingRef.text = TERMINAL UI;
+        // _isRestingRef.text = TERMINAL UI;
+        // _isSpendingRef.text = TERMINAL UI;
+
+        //GAME STATUS
+        // _gameStatusRef.text = TERMINAL UI;
+    }
+
+
+    // -------------------------------------
+    // Debug function to test out timers in timer scene //COMMENT OUT WHEN NOT DEBUGGING!!!!!
+    // -------------------------------------
+
     public void debugBehaviour(){
         //input debug
         if(Input.GetKey("space")){
@@ -89,6 +119,11 @@ public class GameManager : MonoBehaviour
         else{
             _isSpending = false;
         }
+        //debug modifier boosts
+        if(Input.GetKeyDown("m"))
+            StartCoroutine(ApplyEvalModifierForThisAmountOfTime(10.0f,10.0f));
+        if(Input.GetKeyDown("n"))
+            StartCoroutine(ApplyEnergyModifierForThisAmountOfTime(10.0f,10.0f));
 
         //display the value on screen
         _evaluationRef.text = _evaluation.ToString();
@@ -110,27 +145,56 @@ public class GameManager : MonoBehaviour
         _creditModifier = _defaultModifierValue;
     }
 
-    //CALCULATING RESSOURCES
+    // -------------------------------------
+    // How Evaluation/Energy/Credit will behave based on a set of booleans
+    //--------------------------------------
+
     public void RessourceBehaviour(){
 
         //if your working, increase eval
         if(_isWorking){
             _evaluation += Time.deltaTime * _evaluationModifier;
             _energy -= Time.deltaTime * _energyModifier;
+        } else{
+            _evaluation -= Time.deltaTime * _evaluationModifier; // if ur not working, then decrease it anyways
         }
 
+        //if ur working, increase energy but decrease eval
         if(_isResting){
             _energy += Time.deltaTime * _energyModifier;
             _evaluation -= Time.deltaTime * _evaluationModifier;
         }
 
+        //if ur spending, decrease credit
         if(_isSpending){
             _credit -= Time.deltaTime * _creditModifier;
         }
+
+        //------------------------------
     }
 
     // -------------------------------------
-    // Score & Task Methods
+    // Change modifier momentarily
+    // -------------------------------------
+
+    public IEnumerator ApplyEvalModifierForThisAmountOfTime(float appliedTime, float increaseAmount){
+        //increase the modifier by said amount
+        _evaluationModifier += increaseAmount;
+        yield return new WaitForSeconds(appliedTime);
+        //reset the modifier to original value after the time has run out
+        _evaluationModifier -= increaseAmount;
+    }
+
+    public IEnumerator ApplyEnergyModifierForThisAmountOfTime(float appliedTime, float increaseAmount){
+        //increase the modifier by said amount
+        _energyModifier += increaseAmount;
+        yield return new WaitForSeconds(appliedTime);
+        //reset the modifier to original value after the time has run out
+        _energyModifier -= increaseAmount;
+    }
+
+    // -------------------------------------
+    // Score & Task Methods //OLD SCRIPT , TO BE CHANGED!!!
     // -------------------------------------
     public void TaskCompleted(string taskCompleted)
     {
