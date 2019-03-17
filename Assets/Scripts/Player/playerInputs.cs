@@ -14,6 +14,7 @@ public class playerInputs : MonoBehaviour
 
     // private variables ------------------------
     private FirstPersonController m_fps;            // Controller of the fps movement
+    private GameObject m_gm;                        // The Game manager in the scene
 
     // ------------------------------------------
     // Start is called before update
@@ -22,6 +23,9 @@ public class playerInputs : MonoBehaviour
     {
         // Get the fps controller
         m_fps = gameObject.GetComponent<FirstPersonController>();
+
+        // The the gm
+        m_gm = GameObject.FindGameObjectWithTag("GameController");
     }
 
     // ------------------------------------------
@@ -35,6 +39,7 @@ public class playerInputs : MonoBehaviour
             // Focus on the selected terminal and activate it
             m_focusedOnTerminal = true;
             m_focusedTerminal.GetComponent<TerminalController>().m_listenInput = true;
+            m_gm.GetComponent<GameManager>()._isWorking  = true;
         }
 
 
@@ -43,6 +48,7 @@ public class playerInputs : MonoBehaviour
         {
             m_focusedOnTerminal = false;
             m_focusedTerminal.GetComponent<TerminalController>().m_listenInput = false;
+            m_gm.GetComponent<GameManager>()._isWorking  = false;
         }
 
 

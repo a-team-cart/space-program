@@ -44,6 +44,13 @@ public class GameManager : MonoBehaviour
     public List<string> completedTasks;
 
 
+    [Header("Global Time")]
+    public int m_orbitNum;
+    public float m_orbitInterval;
+    private float m_orbitTimer = 0.0f;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +75,9 @@ public class GameManager : MonoBehaviour
         //debug COMMENT OUT WHEN OUTSIDE OF DEBUG MODE
         if(_iAmDebugging)
             debugBehaviour();
+
+        // Count orbits
+        countOrbit();
     }
 
     // -------------------------------------
@@ -227,6 +237,25 @@ public class GameManager : MonoBehaviour
         if(_evaluation > 500)
             _gameStatus = "Go work at McDonald, It pays better";
             // Debug.Log("Go work at McDonald, It pays better");
+    }
+
+    // -------------------------------------
+    // Count orbits
+    // -------------------------------------
+    public void countOrbit()
+    {
+        // Count time
+        m_orbitTimer += Time.deltaTime;
+
+        // check if it cross the intervaL
+        if (m_orbitTimer > m_orbitInterval)
+        {
+            // Add one orbit and reset time
+            m_orbitNum ++;
+            m_orbitTimer = 0.0f;
+        }
+
+
     }
 
     // -------------------------------------
