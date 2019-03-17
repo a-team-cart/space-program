@@ -40,10 +40,13 @@ public class TerminalController : MonoBehaviour
 
         // If the terminal is activated by the player
         if (m_listenInput)
-        {   
+        {
             // Select the default area to the terminal
             if (m_firstBtn)
+            {
                 m_es.GetComponent<EventSystem>().firstSelectedGameObject = m_firstBtn;
+                m_es.GetComponent<EventSystem>().SetSelectedGameObject(m_firstBtn);
+            }
                 
             // Activate interaction on the canvas 
             if (m_screen)
