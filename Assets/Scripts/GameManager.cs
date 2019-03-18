@@ -161,6 +161,10 @@ public class GameManager : MonoBehaviour
 
     public void RessourceBehaviour(){
 
+        //clamp the values for the eval/energy so as to not fo over 100
+        _evaluation = Mathf.Clamp(_evaluation, -100.0f, 100.0f);
+        _energy = Mathf.Clamp(_energy, -100.0f, 100.0f);
+
         //if your working, increase eval
         if(_isWorking){
             _evaluation += Time.deltaTime * _evaluationModifier;
