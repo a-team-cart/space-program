@@ -17,6 +17,7 @@ public class TerminalController : MonoBehaviour
 
     // private variables ------------------------
     private GameObject m_es;                        // Catch the eventSystem in the scene
+    private bool m_setSelection;                    // Set selection of item only once
 
 
     // ------------------------------------------
@@ -42,23 +43,21 @@ public class TerminalController : MonoBehaviour
         if (m_listenInput)
         {
             // Select the default area to the terminal
-            if (m_firstBtn)
+            if (m_firstBtn && m_setSelection)
             {
                 m_es.GetComponent<EventSystem>().firstSelectedGameObject = m_firstBtn;
                 m_es.GetComponent<EventSystem>().SetSelectedGameObject(m_firstBtn);
+                // Don't do it again
+                m_setSelection = false;
             }
                 
             // Activate interaction on the canvas 
             if (m_screen)
                 m_screen.GetComponent<CanvasGroup>().interactable = true;
-                
-
 
             // If the interface is a selection interface
             if (m_selectionInterface)
                 inputSelection();
-
-            
         }
         else
         {
@@ -66,6 +65,8 @@ public class TerminalController : MonoBehaviour
             if (m_screen)
                 m_screen.GetComponent<CanvasGroup>().interactable = false;
 
+            // Set selection back for next fire
+            m_setSelection = true;
         }
 
     }
