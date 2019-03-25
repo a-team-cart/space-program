@@ -18,6 +18,7 @@ public class TerminalController : MonoBehaviour
     // private variables ------------------------
     private GameObject m_es;                        // Catch the eventSystem in the scene
     private bool m_setSelection;                    // Set selection of item only once
+    private GameObject m_uiInside;                  // insideTerminalUI instructions
 
 
     // ------------------------------------------
@@ -27,10 +28,12 @@ public class TerminalController : MonoBehaviour
     {
         // Set listenInput to false per default
         m_listenInput = false;
-        
+
         // Get the eventSystem
         m_es = GameObject.FindGameObjectWithTag("EventSystem");
 
+        //get instructional UI elements in right hand corner
+        m_uiInside = GameObject.FindGameObjectWithTag("insideTerminalUI");
     }
 
     // ------------------------------------------
@@ -38,7 +41,6 @@ public class TerminalController : MonoBehaviour
     // ------------------------------------------
     void Update()
     {
-
         // If the terminal is activated by the player
         if (m_listenInput)
         {
@@ -50,23 +52,33 @@ public class TerminalController : MonoBehaviour
                 // Don't do it again
                 m_setSelection = false;
             }
-                
-            // Activate interaction on the canvas 
+
+            // Activate interaction on the canvas
             if (m_screen)
+            {
                 m_screen.GetComponent<CanvasGroup>().interactable = true;
+            }
 
             // If the interface is a selection interface
             if (m_selectionInterface)
+            {
                 inputSelection();
+            }
+
+            //turn on insideTerminalUI instructions
+            m_uiInside.SetActive(true);
         }
         else
         {
-            // Deactivate interaction on the canvas 
-            if (m_screen)
+            // Deactivate interaction on the canvas
+            if (m_screen) {
                 m_screen.GetComponent<CanvasGroup>().interactable = false;
-
+            }
             // Set selection back for next fire
             m_setSelection = true;
+
+            //turn off insideTerminalUI instructions
+            m_uiInside.SetActive(false);
         }
 
     }
@@ -74,8 +86,8 @@ public class TerminalController : MonoBehaviour
     // ------------------------------------------
     // Methods
     // ------------------------------------------
-    public void inputSelection() 
+    public void inputSelection()
     {
-        
+
     }
 }
