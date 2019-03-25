@@ -1111,6 +1111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1196903603}
   - component: {fileID: 1196903602}
+  - component: {fileID: 1196903604}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1151,6 +1152,8 @@ MonoBehaviour:
   _gameStatus: not determined yet
   m_tasksCompleted: 0
   completedTasks: []
+  m_orbitNum: 0
+  m_orbitInterval: 0
 --- !u!4 &1196903603
 Transform:
   m_ObjectHideFlags: 0
@@ -1165,6 +1168,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1196903604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196903601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89730fb2a3b625448896986fcd14e4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_emailDataFileName: emails.json
+  m_sendersList: []
+  m_messagesList: []
 --- !u!1 &1254686031
 GameObject:
   m_ObjectHideFlags: 0
