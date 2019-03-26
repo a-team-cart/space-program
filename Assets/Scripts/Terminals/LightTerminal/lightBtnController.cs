@@ -24,6 +24,7 @@ public class lightBtnController : MonoBehaviour
     private Image m_longRect;                       // Long Rect image, child of this object
     private bool m_called = true;                   // Do a change of state one time in update (once called)
     private bool m_canGiveValue = false;            // Give value to total at start
+    private float m_counter = 0.0f;                  // Counter for probability of activating a btn
 
     // ------------------------------------------
     // Start is called before update
@@ -50,6 +51,8 @@ public class lightBtnController : MonoBehaviour
         else if (m_called)        
             changeState(false);
 
+        // Always check for a chance to light up
+        LightUpChance();
     }
 
     // ------------------------------------------
@@ -84,6 +87,30 @@ public class lightBtnController : MonoBehaviour
             m_totalBar.receivePowerData(m_btnValue, state);
         else
             m_canGiveValue = true;
+    }
+
+
+    // Check based on probability to light up on its own ------------
+    private void LightUpChance()
+    {
+        // Roll the probabilities each x seconds
+        float roll = 10f;
+
+        // Start timer
+        m_counter += Time.deltaTime;
+
+        // Check when a roll is due
+        if (m_counter >= roll)
+        {
+            // Pick a random number and compare it with the btn chance
+            float rando = Random.Range(0,100f);
+
+            if (m_activatingChance >= rando && !m_on)
+                masterState(true);
+
+            // Reset counter
+            m_counter = 0f;
+        }
     }
 
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.22236139, g: 0.2622401, b: 0.25774243, a: 1}
+  m_IndirectSpecularColor: {r: 0.22236145, g: 0.2622402, b: 0.25774243, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -972,7 +972,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16744
+  m_Name: pb_Mesh9290
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -4487,7 +4487,7 @@ MonoBehaviour:
   - {fileID: 24501960}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &407541884
 GameObject:
   m_ObjectHideFlags: 0
@@ -7036,7 +7036,7 @@ MonoBehaviour:
   - {fileID: 1342192914}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &562241170
 GameObject:
   m_ObjectHideFlags: 0
@@ -15273,7 +15273,7 @@ MonoBehaviour:
   - {fileID: 747495095}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &954474956
 GameObject:
   m_ObjectHideFlags: 0
@@ -20923,7 +20923,7 @@ MonoBehaviour:
   - {fileID: 254087538}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!114 &1449825060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23266,7 +23266,7 @@ MonoBehaviour:
   - {fileID: 1537697030}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &1528372450
 GameObject:
   m_ObjectHideFlags: 0
@@ -23522,7 +23522,7 @@ MonoBehaviour:
   - {fileID: 562241174}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &1537697026
 GameObject:
   m_ObjectHideFlags: 0
@@ -24255,7 +24255,7 @@ MonoBehaviour:
   - {fileID: 118177312}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &1579952360
 GameObject:
   m_ObjectHideFlags: 0
@@ -25552,7 +25552,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17838
+  m_Name: pb_Mesh10380
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -25811,7 +25811,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16932
+  m_Name: pb_Mesh9478
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -26207,7 +26207,7 @@ MonoBehaviour:
   - {fileID: 1572245948}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &1651540855
 GameObject:
   m_ObjectHideFlags: 0
@@ -30287,7 +30287,7 @@ MonoBehaviour:
   - {fileID: 220214594}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &2011204166
 GameObject:
   m_ObjectHideFlags: 0
@@ -32303,7 +32303,7 @@ MonoBehaviour:
   - {fileID: 1992926870}
   m_totalBar: {fileID: 788399051}
   m_btnValue: 10
-  m_activatingChance: 0
+  m_activatingChance: 25
 --- !u!1 &2093469090
 GameObject:
   m_ObjectHideFlags: 0
