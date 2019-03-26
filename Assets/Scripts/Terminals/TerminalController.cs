@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class TerminalController : MonoBehaviour
 {
+
     // public variables -------------------------
     [Header("Terminal Type")]
     public bool m_selectionInterface;               // Selection interface (multiple arrays)
@@ -14,11 +15,11 @@ public class TerminalController : MonoBehaviour
     public GameObject m_screen;                     // Screen of the terminal
     public GameObject m_firstBtn;                   // The first area to be selected when activating the terminal
     public bool m_listenInput;                      // If the player is active on this terminal
+    [HideInInspector]public bool m_setSelection;    // Set selection of item only once
 
     // private variables ------------------------
     private GameObject m_es;                        // Catch the eventSystem in the scene
-    private bool m_setSelection;                    // Set selection of item only once
-    private GameObject m_uiInside;                  // insideTerminalUI instructions
+    
 
 
     // ------------------------------------------
@@ -31,9 +32,6 @@ public class TerminalController : MonoBehaviour
 
         // Get the eventSystem
         m_es = GameObject.FindGameObjectWithTag("EventSystem");
-
-        //get instructional UI elements in right hand corner
-        m_uiInside = GameObject.FindGameObjectWithTag("insideTerminalUI");
     }
 
     // ------------------------------------------
@@ -47,38 +45,26 @@ public class TerminalController : MonoBehaviour
             // Select the default area to the terminal
             if (m_firstBtn && m_setSelection)
             {
-                m_es.GetComponent<EventSystem>().firstSelectedGameObject = m_firstBtn;
-                m_es.GetComponent<EventSystem>().SetSelectedGameObject(m_firstBtn);
+                // Highlight the first button
+                StartCoroutine(SelectButton());
+
                 // Don't do it again
                 m_setSelection = false;
             }
 
             // Activate interaction on the canvas
             if (m_screen)
-            {
                 m_screen.GetComponent<CanvasGroup>().interactable = true;
-            }
-
-            // If the interface is a selection interface
-            if (m_selectionInterface)
-            {
-                inputSelection();
-            }
-
-            //turn on insideTerminalUI instructions
-            m_uiInside.SetActive(true);
+            
         }
         else
         {
             // Deactivate interaction on the canvas
-            if (m_screen) {
+            if (m_screen) 
                 m_screen.GetComponent<CanvasGroup>().interactable = false;
-            }
+            
             // Set selection back for next fire
             m_setSelection = true;
-
-            //turn off insideTerminalUI instructions
-            m_uiInside.SetActive(false);
         }
 
     }
@@ -86,8 +72,11 @@ public class TerminalController : MonoBehaviour
     // ------------------------------------------
     // Methods
     // ------------------------------------------
-    public void inputSelection()
+    private IEnumerator SelectButton()
     {
-
+        // Wait a frame before selecting the button (so it can be highlighted)
+        yield return null;
+        m_es.GetComponent<EventSystem>().SetSelectedGameObject(null);
+        m_es.GetComponent<EventSystem>().SetSelectedGameObject(m_firstBtn);
     }
 }
