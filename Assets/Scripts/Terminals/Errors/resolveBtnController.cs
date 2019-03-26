@@ -10,6 +10,10 @@ public class resolveBtnController : MonoBehaviour
     public GameObject[] m_otherScreens;             // Other screens affected by the error
     public TerminalController m_terminalManager;    // Terminal manager for this screen
     public GameObject m_originalBtn;                // Original first button to put there
+
+    // private variables ------------------------
+    private GameObject m_mainAlarm;                 // Main alarm in the scene
+    private bool m_playing = false;                 // Bool to check if main alarm is playing 
     
 
     // private variables ------------------------
@@ -27,7 +31,12 @@ public class resolveBtnController : MonoBehaviour
     // ------------------------------------------
     void Update()
     {
-    	    
+        if (!m_playing)
+        {
+            // Play the alarm sound
+            GameObject.FindGameObjectWithTag("Alarm").GetComponent<AudioSource>().Play();
+            m_playing = true;
+        }
     }
 
     // ------------------------------------------
@@ -48,6 +57,10 @@ public class resolveBtnController : MonoBehaviour
         // Reset original parameter for navigation on the terminal
         m_terminalManager.m_firstBtn = m_originalBtn;
         m_terminalManager.m_setSelection = true;
+
+        // Stop Alarm
+        GameObject.FindGameObjectWithTag("Alarm").GetComponent<AudioSource>().Stop();
+        m_playing = false;
 
         // Desctivate this screen
         m_thisScreenError.SetActive(false);

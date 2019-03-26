@@ -8,6 +8,7 @@ TagManager:
   - _Light
   - EventSystem
   - insideTerminalUI
+  - Alarm
   layers:
   - Default
   - TransparentFX

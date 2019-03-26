@@ -52,7 +52,8 @@ public class lightBtnController : MonoBehaviour
             changeState(false);
 
         // Always check for a chance to light up
-        LightUpChance();
+        if (!m_on && !m_totalBar.m_resolving)
+            LightUpChance();
     }
 
     // ------------------------------------------
@@ -105,7 +106,7 @@ public class lightBtnController : MonoBehaviour
             // Pick a random number and compare it with the btn chance
             float rando = Random.Range(0,100f);
 
-            if (m_activatingChance >= rando && !m_on)
+            if (m_activatingChance >= rando)
                 masterState(true);
 
             // Reset counter

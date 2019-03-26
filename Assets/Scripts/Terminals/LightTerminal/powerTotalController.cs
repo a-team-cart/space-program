@@ -6,26 +6,26 @@ using UnityEngine.UI;
 public class powerTotalController : MonoBehaviour
 {
     // public variables -------------------------
-    public float m_total;                           // Total power used currently
+    public float m_total;                               // Total power used currently
     [Header("Colours used")]
-    public Color m_critical;                        // Colour when total is critical (red)
-    public Color m_warning;                         // Colour when total is in warning mode (yellow)
-    public Color m_optimal;                         // Colour when total is optimal (green)
-    public Image m_filler;                          // Object that is filled
+    public Color m_critical;                            // Colour when total is critical (red)
+    public Color m_warning;                             // Colour when total is in warning mode (yellow)
+    public Color m_optimal;                             // Colour when total is optimal (green)
+    public Image m_filler;                              // Object that is filled
     [Header("Critical Errors Screen")]
-    public TerminalController m_terminalManager;    // Master monitor (parent of the terminal)
-    public GameObject m_resolveBtn;                 // Resolve btn that will appear if an error occurs
-    public GameObject m_lightErrorScreen;           // Error image for light control screen
-    public GameObject m_viewErrorScreen;            // Error image for master view screen
+    public TerminalController m_terminalManager;        // Master monitor (parent of the terminal)
+    public GameObject m_resolveBtn;                     // Resolve btn that will appear if an error occurs
+    public GameObject m_lightErrorScreen;               // Error image for light control screen
+    public GameObject m_viewErrorScreen;                // Error image for master view screen
     [Header("Sounds")]
-    public AudioClip m_criticalSound;               // Sound to play when slider is in critical section
+    public AudioClip m_criticalSound;                   // Sound to play when slider is in critical section
+    [HideInInspector]public bool m_resolving = false;   // Check if the player is currently resolving an error
     
     // private variables ------------------------
-    private Slider m_slider;                        // Slider component of the object
-    private AudioSource m_as;                       // Audio source attached to this object
-    private bool m_playingAudio;                    // Bool to see if playing audio
-    private bool m_stopAudio;                       // Bool to stop the polaying audio
-    private bool m_resolving = false;               // Check if the player is currently resolving an error
+    private Slider m_slider;                            // Slider component of the object
+    private AudioSource m_as;                           // Audio source attached to this object
+    private bool m_playingAudio;                        // Bool to see if playing audio
+    private bool m_stopAudio;                           // Bool to stop the polaying audio
 
 
     // ------------------------------------------
