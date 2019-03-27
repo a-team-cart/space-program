@@ -26,6 +26,9 @@ public class lightBtnController : MonoBehaviour
     private bool m_canGiveValue = false;            // Give value to total at start
     private float m_counter = 0.0f;                  // Counter for probability of activating a btn
 
+    [Header("Audio Effects")]
+    public AudioManager m_audioManager;                          // Instance of Audio Manager
+
     // ------------------------------------------
     // Start is called before update
     // ------------------------------------------
@@ -71,11 +74,13 @@ public class lightBtnController : MonoBehaviour
         {
             gameObject.GetComponent<Image>().sprite = m_onSprite;
             m_longRect.sprite = m_onRectSprite;
+            m_audioManager.PitchShiftSubmitEffect();
         }
         else
         {
             gameObject.GetComponent<Image>().sprite = m_offSprite;
             m_longRect.sprite = m_offRectSprite;
+            m_audioManager.PitchShiftSubmitEffect();
         }
 
         // Change state on the main view (for each existing btn linked)
