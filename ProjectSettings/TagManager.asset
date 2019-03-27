@@ -9,6 +9,7 @@ TagManager:
   - EventSystem
   - insideTerminalUI
   - Alarm
+  - AudioManager
   layers:
   - Default
   - TransparentFX
