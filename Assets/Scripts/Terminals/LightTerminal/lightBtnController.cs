@@ -20,14 +20,12 @@ public class lightBtnController : MonoBehaviour
     public int m_btnValue;                          // Value of this btn in power (1 to 100)
     public float m_activatingChance;                // Chance that the btn get activated by itself
 
-    // public variables -------------------------
+    // private variables ------------------------
     private Image m_longRect;                       // Long Rect image, child of this object
     private bool m_called = true;                   // Do a change of state one time in update (once called)
     private bool m_canGiveValue = false;            // Give value to total at start
-    private float m_counter = 0.0f;                  // Counter for probability of activating a btn
-
-    [Header("Audio Effects")]
-    public AudioManager m_audioManager;                          // Instance of Audio Manager
+    private float m_counter = 0.0f;                 // Counter for probability of activating a btn
+    private AudioManager m_audioManager;            // Instance of Audio Manager
 
     // ------------------------------------------
     // Start is called before update
@@ -36,6 +34,9 @@ public class lightBtnController : MonoBehaviour
     {
         // Get the rectImage (first child of this object)
         m_longRect = gameObject.transform.GetChild(0).GetComponent<Image>();
+
+        // Get the AudioManager
+        m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 
         // On btns can give value at start
         if (m_on)
@@ -74,13 +75,11 @@ public class lightBtnController : MonoBehaviour
         {
             gameObject.GetComponent<Image>().sprite = m_onSprite;
             m_longRect.sprite = m_onRectSprite;
-            m_audioManager.PitchShiftSubmitEffect();
         }
         else
         {
             gameObject.GetComponent<Image>().sprite = m_offSprite;
             m_longRect.sprite = m_offRectSprite;
-            m_audioManager.PitchShiftSubmitEffect();
         }
 
         // Change state on the main view (for each existing btn linked)
@@ -128,6 +127,9 @@ public class lightBtnController : MonoBehaviour
 
         // Activate change
         m_called = true;
+
+        // Make a sound on press
+        m_audioManager.PitchShiftSubmitEffect();
     }
 
 
