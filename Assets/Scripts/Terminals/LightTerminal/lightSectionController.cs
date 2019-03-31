@@ -14,19 +14,18 @@ public class lightSectionController : MonoBehaviour
     public lightBtnController[] m_childBtn;         // Link to the btns on the main power view
     public bool m_isOffBtn;                         // State if this is a section off btn
 
-    [Header("Audio Effects")]
-    public AudioManager m_audioManager;                          // Instance of Audio Manager
-
     // private variables ------------------------
     private bool m_called = true;                   // Only change one time 
+    private AudioManager m_audioManager;            // Instance of Audio Manager
+
 
     // ------------------------------------------
     // Start is called before update
     // ------------------------------------------
     void Start()
     {
-
-        
+        // Get the AudioManager
+        m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     // ------------------------------------------
@@ -98,22 +97,21 @@ public class lightSectionController : MonoBehaviour
     // When btn get pressed -----------------------------------------
     public void GotPressed()
     {
+        //Play submit sound
+        m_audioManager.PitchShiftSubmitEffect();
+
         // First check type of btn and determine the sitch
         if (m_isOffBtn && m_sectionOn)
         {
             // Deactivate all child btn
             for (int i = 0; i < m_childBtn.Length; i++)
                 m_childBtn[i].masterState(false);
-
-            m_audioManager.PitchShiftSubmitEffect();
         }
         else if (m_isOffBtn && !m_sectionOn) 
         {
             // Activate all child btn
             for (int i = 0; i < m_childBtn.Length; i++)
                 m_childBtn[i].masterState(true);
-
-            m_audioManager.PitchShiftSubmitEffect();
         }
 
 
