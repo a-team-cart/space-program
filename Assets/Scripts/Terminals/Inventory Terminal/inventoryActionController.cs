@@ -32,6 +32,7 @@ public class inventoryActionController : MonoBehaviour
     private float m_transitTimer = 0.0f;            // Timer for when an item has been requested
     private inventoryStateController m_invState;    // Script that check the overall state of the inventory
     private bool m_empty = false;                   // Is true when the stock equals to 0
+    private AudioManager m_audioManager;            // Instance of Audio Manager
 
 
     // ------------------------------------------
@@ -48,6 +49,9 @@ public class inventoryActionController : MonoBehaviour
         // Get the text of this object
         m_displayText = gameObject.GetComponent<Text>();
         m_displayText.text = m_request;
+
+        // Get the AudioManager
+        m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
 
@@ -217,6 +221,9 @@ public class inventoryActionController : MonoBehaviour
     // If the button got pressed --------------------------------------
     public void GotPressed()
     {
+        //Play submit sound
+        m_audioManager.PitchShiftSubmitEffect();
+
         // Make sure the object is not already in transit
         if (!m_inTransit)
             m_inTransit = true;
