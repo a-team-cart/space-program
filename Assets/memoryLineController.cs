@@ -87,7 +87,7 @@ public class memoryLineController : MonoBehaviour
             // Pick a random number and compare it to the btn's probability
             float rightRando = Random.Range(0f, 100f);
 
-            if (m_rightChance >= leftRando && m_rightState)
+            if (m_rightChance >= leftRando && !m_rightState)
             {
                 ChangeState(m_redBtnW, true);
                 m_rightState = true;
@@ -122,5 +122,29 @@ public class memoryLineController : MonoBehaviour
             targetBtn.sprite = m_fullBtn;
         else
             targetBtn.sprite = m_emptyBtn;
+    }
+
+
+    // Reset the row to its default state -------------------------------
+    public void ResetRow(bool direction)
+    {
+        // Reset value of the btns (true for oxygen, false for water)
+        if (direction)
+        {
+            ChangeState(m_redBtnH, false);
+            m_leftState = false;
+        }
+        else
+        {
+            ChangeState(m_redBtnW, false);
+            m_rightState = false;
+        }
+        
+        // Reset the green btn
+        ChangeState(m_greenBtn, true);
+
+        // No more overload, resolve errors
+        m_memory.ErrorCount(m_channelSection, false);
+        m_rowOverload = false;
     }
 }
