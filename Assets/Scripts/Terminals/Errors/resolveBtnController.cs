@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class resolveBtnController : MonoBehaviour
 {
@@ -10,20 +11,22 @@ public class resolveBtnController : MonoBehaviour
     public GameObject[] m_otherScreens;             // Other screens affected by the error
     public TerminalController m_terminalManager;    // Terminal manager for this screen
     public GameObject m_originalBtn;                // Original first button to put there
+    public Sprite m_overSprite;                     // Sprite to display when the user is selecting the btn
 
     // private variables ------------------------
     private GameObject m_mainAlarm;                 // Main alarm in the scene
     private bool m_playing = false;                 // Bool to check if main alarm is playing 
-    
-
-    // private variables ------------------------
+    private Image m_btn;                            // Image btn linked to this object
+    private Sprite m_original;                      // Original sprite to display per default
 
     // ------------------------------------------
     // Start is called before update
     // ------------------------------------------
     void Start()
     {
-     	   
+        // Get the image component and the original sprite
+        m_btn = GetComponent<Image>();   
+        m_original = m_btn.sprite;
     }
 
     // ------------------------------------------
@@ -64,5 +67,16 @@ public class resolveBtnController : MonoBehaviour
 
         // Desctivate this screen
         m_thisScreenError.SetActive(false);
+    }
+
+
+    // If the button got overed -------------------------------------
+    public void IsOver(bool enter)
+    {
+        // Change the sprite if the player is selecting or deselcting
+        if (enter)
+            m_btn.sprite = m_overSprite;
+        else
+            m_btn.sprite = m_original;
     }
 }
