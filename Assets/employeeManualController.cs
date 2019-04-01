@@ -11,6 +11,7 @@ public class employeeManualController : MonoBehaviour
     public GameObject m_arrowLeft;                  // Button that holds the left arrow
     public GameObject m_arrowRight;                 // Button that holds the right arrow
     public GameObject m_beginBtn;                   // Button that display on the front page of the employee
+    public TerminalController m_terminalManager;    // Button to select when you get over the front page
 
 
     // private variables ------------------------
@@ -24,12 +25,14 @@ public class employeeManualController : MonoBehaviour
     void Start()
     {
         // Check what's the max number of pages based on the page array
-        m_maxPage = m_pages.Length;
+        m_maxPage = m_pages.Length - 1;
 
         // Get the image component and set the front page of the manual to start
         m_screen = GetComponent<Image>();
         m_currentPage = 0;
         m_screen.sprite = m_pages[m_currentPage];
+
+        ScanBtn();
     }
 
     // ------------------------------------------
@@ -53,25 +56,34 @@ public class employeeManualController : MonoBehaviour
             m_beginBtn.SetActive(true);
             m_arrowLeft.SetActive(false);
             m_arrowRight.SetActive(false);
+
+            // Selection config
+            m_terminalManager.m_firstBtn = m_beginBtn;
         }
 
         // Btn to show in the array
-        if (m_currentPage == 0)
+        if (m_currentPage > 0 && m_currentPage < m_maxPage)
         {
             m_beginBtn.SetActive(false);
             m_arrowLeft.SetActive(true);
             m_arrowRight.SetActive(true);
+
+            m_terminalManager.m_firstBtn = m_arrowRight;
         }
 
         // Btn to show on the last page
-        if (m_currentPage == 0)
+        if (m_currentPage == m_maxPage)
         {
             m_beginBtn.SetActive(false);
             m_arrowLeft.SetActive(true);
             m_arrowRight.SetActive(false);
+
+            // Selection config
+            m_terminalManager.m_firstBtn = m_arrowLeft;
         }
 
     }
+
 
     // If the screen needs to change page ------------------------------
     public void ChangePage(bool next)
@@ -79,6 +91,9 @@ public class employeeManualController : MonoBehaviour
         // If next has been trigger, make sure it's in the arrays lenght
         if (next && m_currentPage < m_maxPage)
             m_currentPage ++;
+
+        if (next && m_currentPage == m_maxPage)
+            m_currentPage = 0;
         
         // If previous has been trigger, make sure it's above 0
         if (!next && m_currentPage > 0)
@@ -89,6 +104,7 @@ public class employeeManualController : MonoBehaviour
 
         // Update the showing btns on the page
         ScanBtn();
+
     }
 
 }
