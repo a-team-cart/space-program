@@ -3171,7 +3171,7 @@ MonoBehaviour:
   EffectsSourceBackup: {fileID: 1068385354}
   SelectClip: {fileID: 8300000, guid: 6e89bcfcbb154dc4da75403ab2d3a46a, type: 3}
   SubmitClip: {fileID: 8300000, guid: 4056f6362a0011a4daf36467cf6ea1fe, type: 3}
-  ErrorResolvedClip: {fileID: 8300000, guid: 73c6ac336545fbe4ba9bb76697c9665a, type: 3}
+  ErrorResolvedClip: {fileID: 8300000, guid: d151c553965354b40912322e8d3cc21d, type: 3}
   LowPitchRange: 0.95
   HighPitchRange: 1.01
 --- !u!1 &254087534
@@ -5504,7 +5504,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 400dfd4be0776cb49958d73097942ae9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.337
+  m_Volume: 0.497
   m_Pitch: 1
   Loop: 1
   Mute: 0
