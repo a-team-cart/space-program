@@ -111,7 +111,10 @@ public class lightBtnController : MonoBehaviour
             float rando = Random.Range(0,100f);
 
             if (m_activatingChance >= rando)
+            {
                 masterState(true);
+                m_audioManager.PassiveEnabled();
+            }
 
             // Reset counter
             m_counter = 0f;

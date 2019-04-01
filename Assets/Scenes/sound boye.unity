@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.22236139, g: 0.2622401, b: 0.25774243, a: 1}
+  m_IndirectSpecularColor: {r: 0.22236145, g: 0.2622402, b: 0.25774243, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3171,7 +3171,9 @@ MonoBehaviour:
   EffectsSourceBackup: {fileID: 1068385354}
   SelectClip: {fileID: 8300000, guid: 6e89bcfcbb154dc4da75403ab2d3a46a, type: 3}
   SubmitClip: {fileID: 8300000, guid: 4056f6362a0011a4daf36467cf6ea1fe, type: 3}
-  ErrorResolvedClip: {fileID: 8300000, guid: d151c553965354b40912322e8d3cc21d, type: 3}
+  ErrorResolvedClip: {fileID: 8300000, guid: a957cd53df0abc049bdfdfd1302da5fd, type: 3}
+  HoverClip: {fileID: 8300000, guid: 16c3494e139967e42a40a1b30c2cfc0d, type: 3}
+  PassiveClip: {fileID: 8300000, guid: 032da9f76e0a93943831722394173c81, type: 3}
   LowPitchRange: 0.95
   HighPitchRange: 1.01
 --- !u!1 &254087534

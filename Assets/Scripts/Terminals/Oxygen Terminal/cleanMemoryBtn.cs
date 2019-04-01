@@ -11,17 +11,31 @@ public class cleanMemoryBtn : MonoBehaviour
     public Image m_filler;                              // Filler linked to this object
     public Color m_blue;                                // Blue default colour of the btn
 
+    //private variables -------------------------
+    private AudioManager m_audioManager;            // Instance of Audio Manager
+
+
+    // ------------------------------------------
+    // Start is called before update
+    // ------------------------------------------
+    void Start()
+    {
+        // Get the AudioManager
+        m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
 
     // ------------------------------------------
     // Methods
     // ------------------------------------------
-    
+
     // Reset all the btns rows ------------------------------------------------------
     public void OnPressed()
     {
         // Reset all the targeted section rows
         for (int i = 0; i < m_memorySections.Length; i++)
             m_memorySections[i].ResetRow(m_oxygen);
+
+        m_audioManager.PitchShiftSubmitEffect();
     }
 
 
@@ -30,6 +44,8 @@ public class cleanMemoryBtn : MonoBehaviour
     {
         // Put the filler white when on selection
         m_filler.color = Color.white;
+
+        m_audioManager.ItemHighlighted();
     }
 
     public void Deselect()

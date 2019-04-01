@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip SelectClip;
     public AudioClip SubmitClip;
     public AudioClip ErrorResolvedClip;
+    public AudioClip HoverClip;
+    public AudioClip PassiveClip; //for when a UI element is enabled despite no player input
 
     // Random pitch adjustment range.
     public float LowPitchRange = .95f;
@@ -50,6 +52,16 @@ public class AudioManager : MonoBehaviour
     public void ErrorResolved()
     {
         Play(ErrorResolvedClip);
+    }
+
+    public void ItemHighlighted()
+    {
+        Play(HoverClip);
+    }
+
+    public void PassiveEnabled()
+    {
+        Play(PassiveClip, true);
     }
 
     private float RandomizePitch()
