@@ -18,6 +18,7 @@ public class resolveBtnController : MonoBehaviour
     private bool m_playing = false;                 // Bool to check if main alarm is playing 
     private Image m_btn;                            // Image btn linked to this object
     private Sprite m_original;                      // Original sprite to display per default
+    private AudioManager m_audioManager;            // Instance of AudioManager
 
     // ------------------------------------------
     // Start is called before update
@@ -27,6 +28,9 @@ public class resolveBtnController : MonoBehaviour
         // Get the image component and the original sprite
         m_btn = GetComponent<Image>();   
         m_original = m_btn.sprite;
+
+        // Get the AudioManager
+        m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     // ------------------------------------------
@@ -64,6 +68,9 @@ public class resolveBtnController : MonoBehaviour
         // Stop Alarm
         GameObject.FindGameObjectWithTag("Alarm").GetComponent<AudioSource>().Stop();
         m_playing = false;
+
+        // Play error resolved sound
+        m_audioManager.ErrorResolved();
 
         // Desctivate this screen
         m_thisScreenError.SetActive(false);

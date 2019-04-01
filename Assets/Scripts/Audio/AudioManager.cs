@@ -6,32 +6,54 @@ public class AudioManager : MonoBehaviour
 {
     // Audio players components.
     public AudioSource EffectsSource;
+    public AudioSource EffectsSourceBackup; //use this if a sound is already playing, so there's no quick cutoff
     public AudioClip SelectClip;
     public AudioClip SubmitClip;
+    public AudioClip ErrorResolvedClip;
 
     // Random pitch adjustment range.
     public float LowPitchRange = .95f;
     public float HighPitchRange = 1.05f;
 
-    // Play a single clip through the sound effects source.
-    public void Play(AudioClip clip)
+    // Play a single clip with optional pitch shifting
+    public void Play(AudioClip clip, bool pitchShift = false)
     {
-        EffectsSource.clip = clip;
-        EffectsSource.Play();
+        // So we avoid sound cutoff (slamming selections is really jarring)
+        if (!EffectsSource.isPlaying)
+        {
+            if (pitchShift)
+                EffectsSource.pitch = RandomizePitch();
+
+            EffectsSource.clip = clip;
+            EffectsSource.Play();
+        }
+        else
+        {
+            if(pitchShift)
+                EffectsSourceBackup.pitch = RandomizePitch();
+
+            EffectsSourceBackup.clip = clip;
+            EffectsSourceBackup.Play();
+        }
     }
 
     public void PitchShiftSelectionEffect()
     {
-        float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
-        EffectsSource.pitch = randomPitch;
-        Play(SelectClip);
+        Play(SelectClip, true);
     }
 
     public void PitchShiftSubmitEffect()
     {
-        float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
+        Play(SubmitClip, true);
+    }
 
-        EffectsSource.pitch = randomPitch;
-        Play(SubmitClip);
+    public void ErrorResolved()
+    {
+        Play(ErrorResolvedClip);
+    }
+
+    private float RandomizePitch()
+    {
+        return Random.Range(LowPitchRange, HighPitchRange);
     }
 }
