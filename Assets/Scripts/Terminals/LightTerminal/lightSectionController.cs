@@ -98,7 +98,7 @@ public class lightSectionController : MonoBehaviour
     public void GotPressed()
     {
         //Play submit sound
-        m_audioManager.PitchShiftSubmitEffect();
+        m_audioManager.PitchShiftSelectionEffect();
 
         // First check type of btn and determine the sitch
         if (m_isOffBtn && m_sectionOn)
