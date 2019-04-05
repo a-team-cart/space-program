@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NoiseScreen
-  m_Shader: {fileID: 4800000, guid: e4bb5cdbacf836644be3e239e7c3e1ea, type: 3}
+  m_Name: NoiseGridRings 1
+  m_Shader: {fileID: 4800000, guid: 0a97312b44df3af4bbbf9ceece485710, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -35,7 +35,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_24105AD: 0.54
-    - Vector1_317CE4E1: 29.04
+    - Vector1_317CE4E1: 8.63
     - Vector1_526D6FB7: 15.04
     - Vector1_5C530B24: 0.45
     - Vector1_D366DD4F: 0.16

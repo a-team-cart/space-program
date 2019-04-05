@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LED_Scanline_Sin
+  m_Name: LED_Scanline_Sin 1
   m_Shader: {fileID: 4800000, guid: 8274d53514b427949b2ac7ade74fdf57, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -29,10 +29,10 @@ Material:
     - Vector1_AEAFE49F: 0.44
     - Vector1_B7B86DE7: -0.29
     - Vector1_D347787C: 16
-    - Vector1_D366DD4F: 1.08
+    - Vector1_D366DD4F: 7.49
     m_Colors:
     - Color_302C1542: {r: 0, g: 0.05133335, b: 0.063, a: 0}
-    - Color_33B4725A: {r: 1, g: 0, b: 0, a: 0}
+    - Color_33B4725A: {r: 0.6185475, g: 0.9433962, b: 0.64185756, a: 0}
     - Color_69FA2D39: {r: 0.755, g: 1, b: 0.951, a: 0}
     - Vector2_80B535E2: {r: 6, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
