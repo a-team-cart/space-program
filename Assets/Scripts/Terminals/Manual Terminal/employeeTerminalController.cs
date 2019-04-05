@@ -8,6 +8,7 @@ public class employeeTerminalController : MonoBehaviour
     
     // public variables ------------------
     public GameObject m_dayNum;                 // Object that holds orbits Value
+    public Slider m_progessDay;             // The slider that shows the progress days
 
     // private variables -----------------
     private GameObject m_gm;                    // The Gm present in the scene
@@ -38,6 +39,9 @@ public class employeeTerminalController : MonoBehaviour
     private void orbitNumber() 
     {
         int orbitIndex = m_gm.GetComponent<GameManager>().m_orbitNum;
+
+        // Update the slider
+        m_progessDay.value = orbitIndex;
 
         // Check if no null and how many 0 to put before variable
         if (m_dayNum && orbitIndex < 10)
