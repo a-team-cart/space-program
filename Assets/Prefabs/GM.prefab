@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6751886246981794388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6751886246981794390}
+  - component: {fileID: 6751886246981794391}
+  m_Layer: 0
+  m_Name: GM
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6751886246981794390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751886246981794388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6751886246981794391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751886246981794388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151d1c1e89932ee448a54de5051bdabd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _iAmDebugging: 0
+  _evaluation: 100
+  _energy: 100
+  _credit: 100
+  _defaultModifierValue: 0.5
+  _evaluationModifier: 0
+  _energyModifier: 0
+  _creditModifier: 0
+  _evaluationRef: {fileID: 0}
+  _energyRef: {fileID: 0}
+  _creditRef: {fileID: 0}
+  _isWorkingRef: {fileID: 0}
+  _isSpendingRef: {fileID: 0}
+  _isRestingRef: {fileID: 0}
+  _gameStatusRef: {fileID: 0}
+  _isWorking: 0
+  _isResting: 0
+  _isSpending: 0
+  _gameStatus: not determined yet
+  m_tasksCompleted: 0
+  completedTasks: []
+  m_orbitNum: 1
+  m_orbitInterval: 60
