@@ -2307,7 +2307,7 @@ GameObject:
   - component: {fileID: 691411839}
   - component: {fileID: 691411840}
   m_Layer: 0
-  m_Name: bathroomSounds
+  m_Name: BathroomAmbient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2395,8 +2395,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.9217529
-      value: 0
+      time: 0.6630554
+      value: 0.0064086914
       inSlope: -0.06669331
       outSlope: -0.06669331
       tangentMode: 0
@@ -2441,7 +2441,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.936
+      value: 0.923
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4818,7 +4818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
       propertyPath: m_StepInterval
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
       propertyPath: m_FootstepSounds.Array.data[2]
@@ -4844,6 +4844,23 @@ PrefabInstance:
       propertyPath: m_LandSound
       value: 
       objectReference: {fileID: 8300000, guid: a7dd8095ea9b5e24a8fcd9a9104b44b1, type: 3}
+    - target: {fileID: 1905080350, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243318814989117754, guid: 4a65d766c7c2efb4ab3ce1695b982990,
+        type: 2}
+    - target: {fileID: 1905080350, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905080350, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_Volume
+      value: 0.326
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905080350, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 1.06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
 --- !u!4 &1412703724 stripped
@@ -6891,6 +6908,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2166375689322978142, guid: a8eea785b2f8ab74cb95ed7e8e1d6445,
+        type: 3}
+      propertyPath: CoffeeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fc3811a5fa0bb1749841a1556858de04, type: 3}
+    - target: {fileID: 2166375689322978142, guid: a8eea785b2f8ab74cb95ed7e8e1d6445,
+        type: 3}
+      propertyPath: BathroomClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d7fed71a74e09484ba196c0c3d226efd, type: 3}
+    - target: {fileID: 2166375689322978142, guid: a8eea785b2f8ab74cb95ed7e8e1d6445,
+        type: 3}
+      propertyPath: SleepClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e408d9d1294233f428f1bea57fa30441, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8eea785b2f8ab74cb95ed7e8e1d6445, type: 3}
 --- !u!1001 &1923276037

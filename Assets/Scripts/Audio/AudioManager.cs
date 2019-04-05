@@ -12,6 +12,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip ErrorResolvedClip;
     public AudioClip HoverClip;
     public AudioClip PassiveClip; //for when a UI element is enabled despite no player input
+    public AudioClip CoffeeClip;
+    public AudioClip BathroomClip; // hot chocolate high velocity
+    public AudioClip SleepClip;
 
     // Random pitch adjustment range.
     public float LowPitchRange = .95f;
@@ -62,6 +65,21 @@ public class AudioManager : MonoBehaviour
     public void PassiveEnabled()
     {
         Play(PassiveClip, true);
+    }
+
+    public void CoffeeDrank()
+    {
+        Play(CoffeeClip, true);
+    }
+
+    public void BathroomTime()
+    {
+        Play(BathroomClip);
+    }
+
+    public void SleepTime()
+    {
+        Play(SleepClip);
     }
 
     private float RandomizePitch()
