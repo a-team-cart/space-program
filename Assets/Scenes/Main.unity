@@ -4809,9 +4809,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_FootstepSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
       propertyPath: m_WalkSpeed
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_StepInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_FootstepSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fca9423c22a2f242add0f6890bf008f, type: 3}
+    - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_FootstepSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: a32de17c81fda0b479b4cb9936829789, type: 3}
+    - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_FootstepSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 432c3dca21006b0488b9caf354e72e1c, type: 3}
+    - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_FootstepSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5518e886d43a30c43be8d471efdecb49, type: 3}
+    - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_JumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: be9bdd640a8fe4b41bbe334b1f7ccdbf, type: 3}
+    - target: {fileID: 1905080352, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
+      propertyPath: m_LandSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a7dd8095ea9b5e24a8fcd9a9104b44b1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c6897b12a19446d902243dbcc08a9a, type: 3}
 --- !u!4 &1412703724 stripped
@@ -5208,7 +5240,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-26176
+  m_Name: pb_Mesh-80196
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5859,6 +5891,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1584674701}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1584674703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100008, guid: 07fae2b8b2cce234fb934de7af979ecf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1584674701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1584674704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584674703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1b3b17a882edc41abd93d43c15d8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1594745138
 PrefabInstance:
   m_ObjectHideFlags: 0
