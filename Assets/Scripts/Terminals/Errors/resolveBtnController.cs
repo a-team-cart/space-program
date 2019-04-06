@@ -19,6 +19,7 @@ public class resolveBtnController : MonoBehaviour
     private Image m_btn;                            // Image btn linked to this object
     private Sprite m_original;                      // Original sprite to display per default
     private AudioManager m_audioManager;            // Instance of AudioManager
+    private lightManager m_lm;                      // Light manager to control the responsive lights in the ship
 
     // ------------------------------------------
     // Start is called before update
@@ -31,6 +32,9 @@ public class resolveBtnController : MonoBehaviour
 
         // Get the AudioManager
         m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
+        // Get the light manager
+        m_lm = GameObject.FindGameObjectWithTag("GameController").GetComponent<lightManager>();
     }
 
     // ------------------------------------------
@@ -44,6 +48,10 @@ public class resolveBtnController : MonoBehaviour
             GameObject.FindGameObjectWithTag("Alarm").GetComponent<AudioSource>().Play();
             m_playing = true;
         }
+
+        // Change the room lights
+        m_lm.AlarmLight();
+
     }
 
     // ------------------------------------------
@@ -74,6 +82,9 @@ public class resolveBtnController : MonoBehaviour
 
         // Desctivate this screen
         m_thisScreenError.SetActive(false);
+
+        // Reactivate normal lights
+        m_lm.ReturnToNormal();
     }
 
 
