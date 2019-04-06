@@ -37,9 +37,9 @@ public class playerData : MonoBehaviour
         m_creditValue = m_gm.GetComponent<GameManager>()._credit;
 
         // Update the ui for feedback
-        m_workUI.GetComponent<Slider>().value = m_workValue;
-        m_restUI.GetComponent<Slider>().value = m_restValue;
-        m_creditUI.GetComponent<Text>().text = "$ " + m_creditValue;
+        m_workUI.GetComponent<Text>().text = m_workValue.ToString();
+        m_restUI.GetComponent<Text>().text = m_restValue.ToString();
+        m_creditUI.GetComponent<Text>().text = m_creditValue.ToString();
     }
 
     // -----------------------------------
