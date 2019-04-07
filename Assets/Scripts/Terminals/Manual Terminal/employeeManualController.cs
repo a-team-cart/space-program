@@ -13,7 +13,6 @@ public class employeeManualController : MonoBehaviour
     public GameObject m_beginBtn;                   // Button that display on the front page of the employee
     public TerminalController m_terminalManager;    // Button to select when you get over the front page
 
-
     // private variables ------------------------
     private Image m_screen;                         // The screen of this terminal
     private int m_currentPage;                      // Page number to display

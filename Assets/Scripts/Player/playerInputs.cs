@@ -9,12 +9,15 @@ public class playerInputs : MonoBehaviour
     public bool m_canFocus;                         // Able to focus on a Terminal
     public bool m_focusedOnTerminal;                // If the Player is currently on a Terminal
     [Header("Selected Terminal")]
-    public GameObject m_focusedTerminal;            // Which terminal is it in focus?
+    public GameObject m_focusedTerminal;            // Which terminal is it in focus
+    [Header("Intro Door")]
+    public GameObject m_firstDoor;                  // The door that needs to open after the tutorial
 
 
     // private variables ------------------------
     private FirstPersonController m_fps;            // Controller of the fps movement
     private GameObject m_gm;                        // The Game manager in the scene
+    private bool m_firstTime = true;                // The first you get out of a terminal, activate something
 
     // ------------------------------------------
     // Start is called before update
@@ -49,6 +52,14 @@ public class playerInputs : MonoBehaviour
             m_focusedOnTerminal = false;
             m_focusedTerminal.GetComponent<TerminalController>().m_listenInput = false;
             m_gm.GetComponent<GameManager>()._isWorking  = false;
+
+            // Activate the door when getting out of the intro
+            if (m_firstTime)
+            {
+                // Disable first time
+                m_firstTime = false;
+                Debug.Log("ACTIVATE");
+            }
         }
 
 

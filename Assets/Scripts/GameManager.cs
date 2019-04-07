@@ -64,6 +64,9 @@ public class GameManager : MonoBehaviour
         //Display the status of all the variable on terminal
         DisplayStatus();
 
+        // Lock cursor
+        Cursor.lockState = CursorLockMode.Locked;
+
         //ressource behaviour
         RessourceBehaviour();
 
