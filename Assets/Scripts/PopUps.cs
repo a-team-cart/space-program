@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PopUps : MonoBehaviour
 {
@@ -56,6 +57,8 @@ public class PopUps : MonoBehaviour
         m_audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         //set the timer to 0
         m_timerInSeconds = 0;
+        //start with the cursor being invisbile
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -75,7 +78,7 @@ public class PopUps : MonoBehaviour
     	m_currentPopUp = m_coffeeMachine;
 
         //deactivate player/controls
-        m_player.SetActive(false);
+        PlayerControls(false);
     }
 
     public void SleepPodPopUp(){
@@ -83,7 +86,7 @@ public class PopUps : MonoBehaviour
     	m_currentPopUp = m_sleepPod;
 
         //deactivate player/controls
-        m_player.SetActive(false);
+        PlayerControls(false);
     }
 
     public void WashroomPopUp(){
@@ -91,7 +94,7 @@ public class PopUps : MonoBehaviour
     	m_currentPopUp = m_washroom;
 
         //deactivate player/controls
-        m_player.SetActive(false);
+        PlayerControls(false);
     }
 
     public void PersonalEmailsPopUp(){
@@ -99,7 +102,7 @@ public class PopUps : MonoBehaviour
     	m_currentPopUp = m_personalEmails;
 
         //deactivate player/controls
-        m_player.SetActive(false);
+        PlayerControls(false);
     }
 
     //POP UP OPTIONS
@@ -107,12 +110,18 @@ public class PopUps : MonoBehaviour
         m_gameManager._energy += m_coffeeBoost;
         m_gameManager._credit -= m_coffeeCost;
 
+        //audio
+        m_audioManager.CoffeeDrank();
+
         //close pop
         CancelPopUp();
     }
 
     public void UseWashroom(){
         m_timerInSeconds += m_washroomUse;
+
+        //audio
+        m_audioManager.BathroomTime();
 
         //close pop
         CancelPopUp();
@@ -130,22 +139,43 @@ public class PopUps : MonoBehaviour
         m_timerInSeconds += m_sleepCost;
         m_gameManager._energy = 100.0f;
 
+        //audio
+        m_audioManager.SleepTime();
+
         //close pop
         CancelPopUp();
     }
 
+    //DEACTIVATE PLAYER CONTROLS
+    private void PlayerControls(bool activate){
+        if(!activate){
+            m_player.GetComponent<FirstPersonController>().m_isMoving = false;
+            Cursor.visible = true;
+        } else{
+            m_player.GetComponent<FirstPersonController>().m_isMoving = true;
+            Cursor.visible = false;
+        }
+    }
+
     //CANCEL POP UP
-    public void CancelPopUp(){
+    private void CancelPopUp(){
         m_currentPopUp.SetActive(false);
         m_currentPopUp = null;
 
         //re-activate player/controls
-        m_player.SetActive(true);
+        m_player.GetComponent<FirstPersonController>().m_isMoving = true;
+        Cursor.visible = false;
     }
 
     //DEBUGGING-----------------------
     private void DebugPopUps(){
-        if(Input.GetKey("space"))
+        if(Input.GetKey("c"))
             CoffeePopUp();
+        if(Input.GetKey("s"))
+            SleepPodPopUp();
+        if(Input.GetKey("w"))
+            WashroomPopUp();
+        if(Input.GetKey("e"))
+            PersonalEmailsPopUp();
     }
 }
