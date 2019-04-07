@@ -37,5 +37,8 @@ public class splashScreen : MonoBehaviour
     	
         if (m_counter >= 11f)
             SceneManager.LoadScene(m_sceneIndex);
+
+        // Don't show the cursor
+        Cursor.visible = false;
     }
 }

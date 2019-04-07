@@ -561,5 +561,8 @@ MonoBehaviour:
   m_canFocus: 0
   m_focusedOnTerminal: 0
   m_focusedTerminal: {fileID: 0}
-  m_openDoor: 0
+  m_openDoor: 1
   m_firstDoor: {fileID: 0}
+  m_pauseMenu: {fileID: 0}
+  m_resumeBtn: {fileID: 0}
+  m_paused: 0
