@@ -41,7 +41,7 @@ public class PopUps : MonoBehaviour
     public float m_washroomCost;
 
     [Header("Personal Emails Effect")]
-    public float m_personalEmailsBoost;
+    // public float m_personalEmailsBoost;
     public float m_personalEmailsCost;
 
     [Header("Timer in second")]
@@ -117,6 +117,13 @@ public class PopUps : MonoBehaviour
         CancelPopUp();
     }
 
+    public void CheckEmail(){
+        m_gameManager._energy -= m_personalEmailsCost;
+
+        //close pop
+        CancelPopUp();
+    }
+
     public void UseWashroom(){
         m_timerInSeconds += m_washroomUse;
 
@@ -158,7 +165,7 @@ public class PopUps : MonoBehaviour
     }
 
     //CANCEL POP UP
-    private void CancelPopUp(){
+    public void CancelPopUp(){
         m_currentPopUp.SetActive(false);
         m_currentPopUp = null;
 
