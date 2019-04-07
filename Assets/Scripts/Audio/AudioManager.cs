@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip CoffeeClip;
     public AudioClip BathroomClip; // hot chocolate high velocity
     public AudioClip SleepClip;
+    public AudioClip ContemplationClip;
+    public AudioClip EmailClip;
 
     // Random pitch adjustment range.
     public float LowPitchRange = .95f;
@@ -80,6 +82,21 @@ public class AudioManager : MonoBehaviour
     public void SleepTime()
     {
         Play(SleepClip);
+    }
+
+    public void ThinkingHard()
+    {
+        Play(ContemplationClip);
+    }
+
+    public void CancelPopUp()
+    {
+        Play(SubmitClip, true);
+    }
+
+    public void CheckEmail()
+    {
+        Play(EmailClip, true);
     }
 
     private float RandomizePitch()

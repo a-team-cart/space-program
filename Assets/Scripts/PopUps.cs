@@ -120,6 +120,9 @@ public class PopUps : MonoBehaviour
     public void CheckEmail(){
         m_gameManager._energy -= m_personalEmailsCost;
 
+        //audio
+        m_audioManager.CheckEmail();
+
         //close pop
         CancelPopUp();
     }
@@ -137,6 +140,9 @@ public class PopUps : MonoBehaviour
     public void ContemplateLife(){
         m_timerInSeconds += m_washroomCost;
         m_gameManager._energy += m_washroomBoost;
+
+        //audio
+        m_audioManager.ThinkingHard();
 
         //close pop
         CancelPopUp();
@@ -168,6 +174,9 @@ public class PopUps : MonoBehaviour
     public void CancelPopUp(){
         m_currentPopUp.SetActive(false);
         m_currentPopUp = null;
+
+        //Call audio feedback
+        m_audioManager.CancelPopUp();
 
         //re-activate player/controls
         m_player.GetComponent<FirstPersonController>().m_isMoving = true;
