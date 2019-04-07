@@ -269,13 +269,13 @@ public class GameManager : MonoBehaviour
     // Application Methods
     // -------------------------------------
     //Quit the application
-    private void Quit()
+    public void Quit()
     {
         Application.Quit();
     }
 
     //Restart application
-    private void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(0);
     }
