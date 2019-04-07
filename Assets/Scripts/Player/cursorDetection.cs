@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class cursorDetection : MonoBehaviour
 {
     // public variables -------------------------
     public GameObject m_cursor;                     // Cursor Object
     public bool m_onTerminal;                       // Cursor on terminal
+    public hoverController m_borders;                         // Borders when focused on terminal
 
     // private variables ------------------------
     private GameObject m_selectedTerminal;          // Selected object representing a terimnal
@@ -49,6 +51,19 @@ public class cursorDetection : MonoBehaviour
             // Tell the player about it
             m_inputs.m_canFocus = false;
             m_inputs.m_focusedTerminal = m_selectedTerminal;
+        }
+
+        // Check when you need to make the border 
+        if (m_inputs.m_focusedOnTerminal)
+        {
+            // Disable the cursor make the border appear
+            m_borders.HoverEffect(true);
+            m_cursor.SetActive(false);
+        } else
+        {
+            // Disable the cursor make the border appear
+            m_borders.HoverEffect(false);
+            m_cursor.SetActive(true);
         }
     }
 
