@@ -5,20 +5,23 @@ using UnityEngine;
 public class doorController : MonoBehaviour
 {
     // public variables -------------------------
-    public bool m_openDoor;                                                 // Open the door animation
+    public bool m_openDoor;                                  // Open the door animation
 
     // private variables ------------------------
-    private Vector3 m_finalDestination = new Vector3(0f, 2.13f, 0f);       // Where the door should go
-    private float m_speed = 5f;                                            // Animation speed
-    private Vector3 m_initial;                                             // Initial pos
+    private Vector3 m_finalDestination ;                     // Where the door should go
+    private float m_speed = 0.5f;                              // Animation speed
+    private Vector3 m_initial;                               // Initial pos
 
     // ------------------------------------------
     // Start is called before update
     // ------------------------------------------
     void Start()
     {
+        // Get the initial pos
         m_initial = transform.position;
-     	   
+     	
+        // Get the final destination
+        m_finalDestination = new Vector3(m_initial.x, 4.636f, m_initial.z);
     }
 
     // ------------------------------------------
@@ -35,6 +38,10 @@ public class doorController : MonoBehaviour
 
             // Update it
             transform.position = currentPos;
+
+            // Check if the door arrived at destination
+            if (currentPos.y > m_finalDestination.y - 0.1f)
+                m_openDoor = false;
         }
     	    
     }
@@ -42,4 +49,10 @@ public class doorController : MonoBehaviour
     // ------------------------------------------
     // Methods
     // ------------------------------------------
+
+    // Open the door when it's called --------------------------------
+    public void Open()
+    {
+        m_openDoor = true;
+    }
 }

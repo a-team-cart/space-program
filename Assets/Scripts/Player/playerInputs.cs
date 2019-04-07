@@ -11,7 +11,7 @@ public class playerInputs : MonoBehaviour
     [Header("Selected Terminal")]
     public GameObject m_focusedTerminal;            // Which terminal is it in focus
     [Header("Intro Door")]
-    public GameObject m_firstDoor;                  // The door that needs to open after the tutorial
+    public doorController m_firstDoor;              // The door that needs to open after the tutorial
 
 
     // private variables ------------------------
@@ -56,9 +56,9 @@ public class playerInputs : MonoBehaviour
             // Activate the door when getting out of the intro
             if (m_firstTime)
             {
-                // Disable first time
+                // Disable first time and open the door
                 m_firstTime = false;
-                Debug.Log("ACTIVATE");
+                m_firstDoor.Open();
             }
         }
 
