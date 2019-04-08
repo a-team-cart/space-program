@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PopUps : MonoBehaviour
@@ -17,6 +18,12 @@ public class PopUps : MonoBehaviour
 	public GameObject m_personalEmails;
 
 	public GameObject m_currentPopUp;
+
+    [Header("Button References")]
+    public GameObject m_coffeeButton;
+    public GameObject m_sleepButton;
+    public GameObject m_washroomButton;
+    public GameObject m_emailButton;
 
 	//Ressources
     [Header("Reference to game manager")]
@@ -47,6 +54,8 @@ public class PopUps : MonoBehaviour
     [Header("Timer in second")]
     public float m_timerInSeconds;
 
+    private GameObject m_es;
+
 	//audio manager (call Ali's script )
 	AudioManager m_audioManager;
 
@@ -59,6 +68,9 @@ public class PopUps : MonoBehaviour
         m_timerInSeconds = 0;
         //start with the cursor being invisbile
         Cursor.visible = false;
+
+        // Get the event system
+        m_es = GameObject.FindGameObjectWithTag("EventSystem");
     }
 
     // Update is called once per frame
@@ -79,6 +91,7 @@ public class PopUps : MonoBehaviour
 
         //deactivate player/controls
         PlayerControls(false);
+        StartCoroutine(SelectButton(m_coffeeButton));
     }
 
     public void SleepPodPopUp(){
@@ -87,6 +100,7 @@ public class PopUps : MonoBehaviour
 
         //deactivate player/controls
         PlayerControls(false);
+        StartCoroutine(SelectButton(m_sleepButton));
     }
 
     public void WashroomPopUp(){
@@ -95,6 +109,7 @@ public class PopUps : MonoBehaviour
 
         //deactivate player/controls
         PlayerControls(false);
+        StartCoroutine(SelectButton(m_washroomButton));
     }
 
     public void PersonalEmailsPopUp(){
@@ -103,6 +118,7 @@ public class PopUps : MonoBehaviour
 
         //deactivate player/controls
         PlayerControls(false);
+        StartCoroutine(SelectButton(m_emailButton));
     }
 
     //POP UP OPTIONS
@@ -183,15 +199,23 @@ public class PopUps : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private IEnumerator SelectButton(GameObject firstButton)
+    {
+        // Wait a frame before selecting the button (so it can be highlighted)
+        yield return null;
+        m_es.GetComponent<EventSystem>().SetSelectedGameObject(null);
+        m_es.GetComponent<EventSystem>().SetSelectedGameObject(firstButton);
+    }
+
     //DEBUGGING-----------------------
     private void DebugPopUps(){
         if(Input.GetKey("c"))
             CoffeePopUp();
-        if(Input.GetKey("s"))
+        if(Input.GetKey("v"))
             SleepPodPopUp();
-        if(Input.GetKey("w"))
+        if(Input.GetKey("b"))
             WashroomPopUp();
-        if(Input.GetKey("e"))
+        if(Input.GetKey("n"))
             PersonalEmailsPopUp();
     }
 }

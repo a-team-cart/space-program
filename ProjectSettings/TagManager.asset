@@ -12,6 +12,10 @@ TagManager:
   - AudioManager
   - Stars
   - ResponsiveLights
+  - SleepingPod
+  - VendingMachine
+  - SpaceToilet
+  - Coffee
   layers:
   - Default
   - TransparentFX

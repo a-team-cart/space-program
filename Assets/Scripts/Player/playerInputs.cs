@@ -17,7 +17,9 @@ public class playerInputs : MonoBehaviour
     [Header("Pause Menu")]
     public GameObject m_pauseMenu;                  // The pause menu in the scene
     public GameObject m_resumeBtn;                  // Resume btn on the pause menu
-
+    [Header("PopUps")]
+    public cursorDetection m_cursor;
+    public PopUps m_popUps;
 
     // private variables ------------------------
     private FirstPersonController m_fps;            // Controller of the fps movement
@@ -85,6 +87,24 @@ public class playerInputs : MonoBehaviour
             m_paused = !m_paused;
             PauseGame(m_paused);
         }
+
+        //CODRIN
+        if(m_cursor.m_onToilet && Input.GetButtonDown("Fire1") && !m_paused)
+        {
+            m_popUps.WashroomPopUp();
+        }
+        if(m_cursor.m_onSleepPod && Input.GetButtonDown("Fire1") && !m_paused)
+        {
+            m_popUps.SleepPodPopUp();
+        }
+        if(m_cursor.m_onCoffee && Input.GetButtonDown("Fire1") && !m_paused)
+        {
+            m_popUps.CoffeePopUp();
+        }
+        // if(m_cursor.m_onEmail && Input.GetButtonDown("Fire1") && !m_paused)
+        // {
+        //     m_popUps.PersonalEmailsPopUp();
+        // }
 
 
     }

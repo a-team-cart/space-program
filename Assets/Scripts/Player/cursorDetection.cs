@@ -14,6 +14,11 @@ public class cursorDetection : MonoBehaviour
     private GameObject m_selectedTerminal;          // Selected object representing a terimnal
     private playerInputs m_inputs;                  // Player object
 
+    //CODRIN POP UPS CHECK
+    public bool m_onToilet;
+    public bool m_onSleepPod;
+    public bool m_onCoffee;
+    public bool m_onEmail;
     // ------------------------------------------
     // Start is called before update
     // ------------------------------------------
@@ -65,6 +70,15 @@ public class cursorDetection : MonoBehaviour
             m_borders.HoverEffect(false);
             m_cursor.SetActive(true);
         }
+
+        //CODRIN POP UPS INTERACTION
+        // When the cursor is on terminal
+        if (m_onEmail || m_onToilet || m_onCoffee || m_onSleepPod )
+        {
+            // Activate the animation of the cursor
+            m_cursor.GetComponent<cursorController>().m_expandAnim = true;
+            m_cursor.GetComponent<cursorController>().m_returnAnim = false;
+        }
     }
 
     // ------------------------------------------
@@ -78,6 +92,24 @@ public class cursorDetection : MonoBehaviour
             m_onTerminal = true;
             m_selectedTerminal = col.gameObject;
         }
+
+        //CODRIN
+        if (col.gameObject.tag == "SleepingPod")
+        {
+            m_onSleepPod = true;
+        }
+        if (col.gameObject.tag == "Coffee")
+        {
+            m_onCoffee = true;
+        }
+        if (col.gameObject.tag == "Email")
+        {
+            m_onEmail = true;
+        }
+        if (col.gameObject.tag == "SpaceToilet")
+        {
+            m_onToilet = true;
+        }
     }
 
     public void OnTriggerExit(Collider col)
@@ -87,6 +119,24 @@ public class cursorDetection : MonoBehaviour
         {
             m_onTerminal = false;
             m_selectedTerminal = null;
+        }
+
+        //CODRIN
+        if (col.gameObject.tag == "SleepingPod")
+        {
+            m_onSleepPod = false;
+        }
+        if (col.gameObject.tag == "Coffee")
+        {
+            m_onCoffee = false;
+        }
+        if (col.gameObject.tag == "Email")
+        {
+            m_onEmail = false;
+        }
+        if (col.gameObject.tag == "SpaceToilet")
+        {
+            m_onToilet = false;
         }
     }
 }

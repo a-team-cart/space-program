@@ -317,9 +317,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1584674705}
+  - component: {fileID: 4335065233708199408}
   m_Layer: 0
   m_Name: CoffeeMachine
-  m_TagString: Untagged
+  m_TagString: Coffee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -342,3 +343,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 113.812004, z: 0}
+--- !u!65 &4335065233708199408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584674703}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.49086076, y: 0.9339435, z: 0.7054421}
+  m_Center: {x: 0.0015537333, y: 0.4644714, z: 0.082666755}
