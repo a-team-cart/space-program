@@ -8,7 +8,8 @@ public class employeeTerminalController : MonoBehaviour
     
     // public variables ------------------
     public GameObject m_dayNum;                 // Object that holds orbits Value
-    public Slider m_progessDay;             // The slider that shows the progress days
+    public Slider m_progessDay;                 // The slider that shows the progress days
+    public Text m_workNumber;                   // Number of the work engagement
 
     // private variables -----------------
     private GameObject m_gm;                    // The Gm present in the scene
@@ -30,6 +31,8 @@ public class employeeTerminalController : MonoBehaviour
         // Update the number of orbit
         orbitNumber();
 
+        // Update work engagement number
+        UpdateWork();
 
     }
 
@@ -49,5 +52,17 @@ public class employeeTerminalController : MonoBehaviour
 
         if (m_dayNum && orbitIndex >= 10)
             m_dayNum.GetComponent<Text>().text = "0" + orbitIndex;
+    }
+
+
+    private void UpdateWork()
+    {
+        float workIndex = m_gm.GetComponent<GameManager>()._evaluation;
+
+        // No decimals
+        workIndex = (int)workIndex;
+
+        // Update the number
+        m_workNumber.text = workIndex.ToString() + "%";
     }
 }

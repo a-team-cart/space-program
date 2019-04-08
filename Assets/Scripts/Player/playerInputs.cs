@@ -24,9 +24,10 @@ public class playerInputs : MonoBehaviour
     // private variables ------------------------
     private FirstPersonController m_fps;            // Controller of the fps movement
     private GameObject m_gm;                        // The Game manager in the scene
-    private bool m_firstTime = true;                // The first you get out of a terminal, activate something
+    private bool m_firstTime = true;                // The first you get out of a terminal, activate something (and stop time)
     [HideInInspector]public bool m_paused;          // If the game is paused
     private GameObject m_es;                        // Instance of the event manager
+
 
     // ------------------------------------------
     // Start is called before update
@@ -55,6 +56,10 @@ public class playerInputs : MonoBehaviour
             m_focusedOnTerminal = true;
             m_focusedTerminal.GetComponent<TerminalController>().m_listenInput = true;
             m_gm.GetComponent<GameManager>()._isWorking  = true;
+
+            // For the first terminal
+            if (m_firstTime)
+                Time.timeScale = 0;
         }
 
 
@@ -69,6 +74,7 @@ public class playerInputs : MonoBehaviour
             if (m_firstTime && m_openDoor)
             {
                 // Disable first time and open the door
+                Time.timeScale = 1;
                 m_firstTime = false;
                 m_firstDoor.Open();
             }

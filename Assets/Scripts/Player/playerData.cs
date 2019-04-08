@@ -36,6 +36,10 @@ public class playerData : MonoBehaviour
         m_restValue = m_gm.GetComponent<GameManager>()._energy;
         m_creditValue = m_gm.GetComponent<GameManager>()._credit;
 
+        // Round up
+        m_workValue = (int)m_workValue;
+        m_restValue = (int)m_restValue;
+
         // Update the ui for feedback
         m_workUI.GetComponent<Text>().text = m_workValue.ToString();
         m_restUI.GetComponent<Text>().text = m_restValue.ToString();
