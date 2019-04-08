@@ -18,6 +18,8 @@ public class PopUps : MonoBehaviour
 	public GameObject m_washroom;
 	public GameObject m_personalEmails;
     public GameObject m_winning;
+    public Text m_engagement;
+    public Text m_remainingCredit;
     public GameObject m_slacker;
     public GameObject m_burnout;
 
@@ -116,6 +118,8 @@ public class PopUps : MonoBehaviour
         m_winning.SetActive(true);
         m_currentPopUp = m_winning;
         m_gameIsDone = true;
+        m_engagement.text = m_gameManager._evaluation.ToString();
+        m_remainingCredit.text = m_gameManager._credit.ToString();
         //deactivate player/controls
         PlayerControls(false);
     }
