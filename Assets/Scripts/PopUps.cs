@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PopUps : MonoBehaviour
@@ -16,6 +17,9 @@ public class PopUps : MonoBehaviour
 	public GameObject m_sleepPod;
 	public GameObject m_washroom;
 	public GameObject m_personalEmails;
+    public GameObject m_winning;
+    public GameObject m_slacker;
+    public GameObject m_burnout;
 
 	public GameObject m_currentPopUp;
 
@@ -54,7 +58,11 @@ public class PopUps : MonoBehaviour
     [Header("Timer in second")]
     public float m_timerInSeconds;
 
+    //event system
     private GameObject m_es;
+
+    //is the game done?
+    private bool m_gameIsDone = false;
 
 	//audio manager (call Ali's script )
 	AudioManager m_audioManager;
@@ -79,9 +87,53 @@ public class PopUps : MonoBehaviour
         //increment the timer over time
         m_timerInSeconds += Time.deltaTime;
 
+        //winning or losing popups
+        if(m_gameManager.m_orbitNum >= 30)
+        {
+            Congratulations();
+        }
+        if(m_gameManager._evaluation <= 0)
+        {
+            Slacker();
+        }
+        if(m_gameManager._energy <= 0)
+        {
+            BurnOut();
+        }
+        if(m_gameIsDone && Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(0);
+        }
+
         //DEBUGGING--------
         if(m_isDebugging)
             DebugPopUps();
+    }
+
+    //WINNING/LOSING POP UPS
+    public void Congratulations(){
+        m_winning.SetActive(true);
+        m_currentPopUp = m_winning;
+        m_gameIsDone = true;
+        //deactivate player/controls
+        PlayerControls(false);
+    }
+
+    public void BurnOut(){
+        m_burnout.SetActive(true);
+        m_currentPopUp = m_burnout;
+        m_gameIsDone = true;
+        //deactivate player/controls
+        PlayerControls(false);
+    }
+
+    public void Slacker(){
+        m_slacker.SetActive(true);
+        m_currentPopUp = m_slacker;
+        m_gameIsDone = true;
+        //deactivate player/controls
+        PlayerControls(false);
     }
 
     //ACTIVATING THE POP UPS, CALL THESE FUNCTIONS TO TRIGGER THE POPUPS
@@ -179,7 +231,7 @@ public class PopUps : MonoBehaviour
     private void PlayerControls(bool activate){
         if(!activate){
             m_player.GetComponent<FirstPersonController>().m_isMoving = false;
-            Cursor.visible = true;
+            Cursor.visible = false;
         } else{
             m_player.GetComponent<FirstPersonController>().m_isMoving = true;
             Cursor.visible = false;
